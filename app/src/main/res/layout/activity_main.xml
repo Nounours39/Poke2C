@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!--<android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:minHeight="?attr/actionBarSize"
+            />-->
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/red"
+            android:orientation="vertical">
+
+
+            <TableLayout
+                android:id="@+id/User"
+                android:layout_width="fill_parent"
+                android:layout_height="270dp"
+                android:layout_margin="30dp"
+                android:stretchColumns="*"
+                >
+                <TableRow
+                    android:id="@+id/User1-2"
+                    android:layout_width="match_parent"
+                    android:weightSum="1"
+                    android:layout_marginTop="5dp">
+
+                    <FrameLayout
+                        android:layout_width="125dp"
+                        android:layout_height="match_parent"
+                        android:layout_column="0"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="5dp"
+                        >
+
+                        <ImageView
+                            android:id="@+id/ima1"
+                            android:layout_width="125dp"
+                            android:layout_height="125dp"
+                            app:srcCompat="@drawable/pikachu" />
+
+                        <LinearLayout
+                            android:layout_width="125dp"
+                            android:layout_height="fill_parent">
+
+                            <TextView
+                                android:id="@+id/Name1"
+                                android:layout_width="125dp"
+                                android:layout_height="125dp"
+                                android:gravity="center"
+                                android:textSize="16dp" />
+                        </LinearLayout>
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="125dp"
+                        android:layout_height="match_parent"
+                        android:layout_column="1"
+                        >
+
+                        <ImageView
+                            android:id="@+id/ima2"
+                            android:layout_width="125dp"
+                            android:layout_height="125dp"
+                            app:srcCompat="@drawable/salameche" />
+
+                        <LinearLayout
+                            android:layout_width="125dp"
+                            android:layout_height="fill_parent">
+
+                            <TextView
+                                android:id="@+id/Name2"
+                                android:layout_width="125dp"
+                                android:layout_height="125dp"
+                                android:gravity="center"
+                                android:textSize="16dp" />
+                        </LinearLayout>
+                    </FrameLayout>
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/User3-4"
+                    android:layout_width="match_parent"
+                    android:weightSum="1"
+                    android:layout_marginTop="10dp">
+
+                    <FrameLayout
+                        android:layout_width="125dp"
+                        android:layout_height="match_parent"
+                        android:layout_column="0"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="5dp"
+                        >
+
+                        <ImageView
+                            android:id="@+id/ima3"
+                            android:layout_width="125dp"
+                            android:layout_height="125dp"
+                            app:srcCompat="@drawable/bulbizarre" />
+
+                        <LinearLayout
+                            android:layout_width="125dp"
+                            android:layout_height="fill_parent">
+
+                            <TextView
+                                android:id="@+id/Name3"
+                                android:layout_width="125dp"
+                                android:layout_height="125dp"
+                                android:gravity="center"
+                                android:textSize="16dp" />
+                        </LinearLayout>
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:layout_width="125dp"
+                        android:layout_height="match_parent"
+                        android:layout_column="1"
+
+                        >
+
+                        <ImageView
+                            android:id="@+id/ima4"
+                            android:layout_width="125dp"
+                            android:layout_height="125dp"
+                            app:srcCompat="@drawable/carapuce" />
+
+                        <LinearLayout
+                            android:layout_width="125dp"
+                            android:layout_height="fill_parent">
+
+                            <TextView
+                                android:id="@+id/Name4"
+                                android:layout_width="125dp"
+                                android:layout_height="125dp"
+                                android:gravity="center"
+                                android:textSize="16dp" />
+                        </LinearLayout>
+                    </FrameLayout>
+
+                </TableRow>
+
+
+
+            </TableLayout>
+
+            <Button
+                android:id="@+id/CreateUser"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:text="Ajouter un collectionneur"
+                android:background="#90000000"
+                android:textColor="#FFFFFF"
+            />
+
+            <Button
+                android:id="@+id/Info"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="40dp"
+                android:layout_gravity="center"
+                android:text="Information"
+                android:background="#90000000"
+                android:textColor="#FFFFFF"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.v4.widget.DrawerLayout>
