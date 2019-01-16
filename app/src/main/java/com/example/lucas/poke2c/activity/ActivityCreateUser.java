@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.lucas.poke2c.
 import com.example.lucas.poke2c.MainActivity;
 import com.example.lucas.poke2c.R;
 import com.example.lucas.poke2c.database.DBManagerInformation;
@@ -58,8 +57,7 @@ public class ActivityCreateUser extends AppCompatActivity {
                 EditText editTextLogin = findViewById(R.id.loginUser);
                 EditText editTextMdp = findViewById(R.id.mdpUser);
                 if (!editTextNom.getText().toString().equals("") && !editTextLogin.getText().toString().equals("") && !editTextMdp.getText().toString().equals("")) {
-                    if(editTextNom.getText().toString().length() < 4 || editTextLogin.getText().toString().length() < 6 || editTextMdp.getText().toString().length() < 6){
-                        if(editTextNom.getText().toString().length() > 15 || editTextDescription.getText().toString().length() > 50 || editTextLogin.getText().toString().length() > 12 || editTextMdp.getText().toString().length() > 12){
+                    //if(editTextNom.getText().length() <= 4 && editTextLogin.getText().toString().trim().length() < 5 && editTextMdp.getText().toString().trim().length() < 5){
                             DBManagerUtilisateur.init(context);
                             dbManagerUtilisateur = DBManagerUtilisateur.getInstance();
 
@@ -67,12 +65,9 @@ public class ActivityCreateUser extends AppCompatActivity {
                             dbManagerUtilisateur.createUtilisateur(util);
                             startActivity(create);
                             finish();
-                        }else{
-                            Toast.makeText(ActivityCreateUser.this, "Un des champs saisis est trop long, Nom : 15 caracteres, description 50c, login : 12c, mdp : 12c !", Toast.LENGTH_LONG).show();
-                        }
-                    }else{
-                        Toast.makeText(ActivityCreateUser.this, "Un des champs saisis est trop cours, Nom : 4 caractères, login : 6c, mdp : 6c !", Toast.LENGTH_LONG).show();
-                    }
+                   //}else{
+                        //Toast.makeText(ActivityCreateUser.this, "Un des champs saisis est trop cours, nom : 4 caractères, login : 6 caractères, mdp : 6 caractères !", Toast.LENGTH_LONG).show();
+                    //}
                 } else {
                     Toast.makeText(ActivityCreateUser.this, "Tous les champs ne sont pas remplis, veuillez tous les saisir ! ", Toast.LENGTH_LONG).show();
                 }

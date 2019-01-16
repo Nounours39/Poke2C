@@ -47,6 +47,7 @@
             android:inputType="textPersonName"
             android:text=""
             android:textSize="14dp"
+            android:maxLength="12"
             android:layout_margin="5dp"/>
 
         <TextView
@@ -69,6 +70,7 @@
             android:textSize="14dp"
             android:inputType="textPersonName"
             android:text=""
+            android:maxLength="50"
             android:layout_margin="5dp"/>
 
         <TextView
@@ -91,6 +93,7 @@
             android:textSize="14dp"
             android:inputType="textPersonName"
             android:text=""
+            android:maxLength="12"
             android:layout_margin="5dp"/>
 
         <TextView
@@ -111,6 +114,7 @@
             android:ems="10"
             android:textColor="@color/colorBlue"
             android:textSize="14dp"
+            android:maxLength="12"
             android:inputType="textPassword"
             android:layout_margin="5dp"/>
 
