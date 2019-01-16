@@ -59,6 +59,16 @@ public class DBManagerInformation {
         }
     }
 
+    public void removeAllInformation(List<Information> lesInformations) {
+        try {
+            for(int i = 0;i<lesInformations.size();i++) {
+                getHelper().getInformationDao().delete(lesInformations.get(i));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public long updateInformation(Information information) {
         try {
             getHelper().getInformationDao().update(information);
