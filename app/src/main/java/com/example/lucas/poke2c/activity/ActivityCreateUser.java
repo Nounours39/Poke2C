@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.lucas.poke2c.
 import com.example.lucas.poke2c.MainActivity;
 import com.example.lucas.poke2c.R;
 import com.example.lucas.poke2c.database.DBManagerInformation;
@@ -57,7 +58,7 @@ public class ActivityCreateUser extends AppCompatActivity {
                 EditText editTextLogin = findViewById(R.id.loginUser);
                 EditText editTextMdp = findViewById(R.id.mdpUser);
                 if (!editTextNom.getText().toString().equals("") && !editTextLogin.getText().toString().equals("") && !editTextMdp.getText().toString().equals("")) {
-                    if(editTextNom.getText().toString().length() < 4 || editTextLogin.getText().toString().length() > 6 || editTextMdp.getText().toString().length() > 6){
+                    if(editTextNom.getText().toString().length() < 4 || editTextLogin.getText().toString().length() < 6 || editTextMdp.getText().toString().length() < 6){
                         if(editTextNom.getText().toString().length() > 15 || editTextDescription.getText().toString().length() > 50 || editTextLogin.getText().toString().length() > 12 || editTextMdp.getText().toString().length() > 12){
                             DBManagerUtilisateur.init(context);
                             dbManagerUtilisateur = DBManagerUtilisateur.getInstance();

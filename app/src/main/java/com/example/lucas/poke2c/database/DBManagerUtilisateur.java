@@ -2,7 +2,7 @@ package com.example.lucas.poke2c.database;
 
 import android.content.Context;
 
-import com.example.lucas.poke2c.model.Collection;
+import com.example.lucas.poke2c.model.CollectionN;
 import com.example.lucas.poke2c.model.Utilisateur;
 
 import java.sql.SQLException;

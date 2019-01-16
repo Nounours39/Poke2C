@@ -3,6 +3,7 @@ package com.example.lucas.poke2c;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -19,10 +20,14 @@ import com.example.lucas.poke2c.activity.ActivityCollection;
 import com.example.lucas.poke2c.activity.ActivityCreateUser;
 import com.example.lucas.poke2c.activity.ActivityInfo;
 import com.example.lucas.poke2c.database.DBManagerUtilisateur;
+import com.example.lucas.poke2c.model.Information;
 import com.example.lucas.poke2c.model.Utilisateur;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -252,11 +257,10 @@ public class MainActivity extends AppCompatActivity {
         ////getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-
         btnInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(intentInfo);
+                    startActivity(intentInfo);
             }
         });
 

@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.lucas.poke2c.model.CartePokemon;
-import com.example.lucas.poke2c.model.Collection;
+import com.example.lucas.poke2c.model.CollectionN;
 import com.example.lucas.poke2c.model.Information;
 import com.example.lucas.poke2c.model.Utilisateur;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
@@ -19,7 +19,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     /** A/D
      *
      */
-    private Dao<Collection, Integer> CollectionDAO = null;
+    private Dao<CollectionN, Integer> CollectionDAO = null;
     private Dao<Information, Integer> InformationDAO = null;
     private Dao<Utilisateur, Integer> UtilisateurDAO = null;
     private Dao<CartePokemon, Integer> CartePokemonDAO = null;
@@ -39,7 +39,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase, com.j256.ormlite.support.ConnectionSource connectionSource) {
         try {
             Log.i(DatabaseHelper.class.getName(), "onCreate");
-            TableUtils.createTable(connectionSource, Collection.class);
+            TableUtils.createTable(connectionSource, CollectionN.class);
             TableUtils.createTable(connectionSource, Information.class);
             TableUtils.createTable(connectionSource, Utilisateur.class);
             TableUtils.createTable(connectionSource, CartePokemon.class);
@@ -54,7 +54,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, com.j256.ormlite.support.ConnectionSource connectionSource, int i, int i2) {
         try {
             Log.i(DatabaseHelper.class.getName(), "onUpgrade");
-            TableUtils.dropTable(connectionSource, Collection.class, true);
+            TableUtils.dropTable(connectionSource, CollectionN.class, true);
             TableUtils.dropTable(connectionSource, Information.class, true);
             TableUtils.dropTable(connectionSource, Utilisateur.class, true);
             TableUtils.dropTable(connectionSource, CartePokemon.class, true);
@@ -69,10 +69,10 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     /** Getter/Setter
      *
      */
-    public Dao<Collection, Integer> getCollectionDao() {
+    public Dao<CollectionN, Integer> getCollectionDao() {
         if (CollectionDAO == null) {
             try {
-                CollectionDAO = getDao(Collection.class);
+                CollectionDAO = getDao(CollectionN.class);
             }catch (java.sql.SQLException e) {
                 e.printStackTrace();
             }
