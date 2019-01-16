@@ -2,8 +2,8 @@ package com.example.lucas.poke2c.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +12,6 @@ import android.widget.Toast;
 
 import com.example.lucas.poke2c.MainActivity;
 import com.example.lucas.poke2c.R;
-import com.example.lucas.poke2c.database.DBManagerInformation;
 import com.example.lucas.poke2c.database.DBManagerUtilisateur;
 import com.example.lucas.poke2c.model.Utilisateur;
 
