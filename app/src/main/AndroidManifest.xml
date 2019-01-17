@@ -19,6 +19,7 @@
         <activity android:name=".activity.ActivityInfo" />
         <activity android:name=".activity.ActivityCreateUser" />
         <activity android:name=".activity.ActivityCollection"></activity>
+        <activity android:name=".popup.Pop"></activity>
     </application>
 
 </manifest>
