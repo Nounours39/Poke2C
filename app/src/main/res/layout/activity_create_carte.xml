@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/colorWhite"
+        >
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBlack"
+            android:minHeight="?attr/actionBarSize"
+            />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="Création d'une carte"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nom de la carte:"
+            android:textSize="14dp"
+            android:layout_margin="5dp"/>
+
+        <EditText
+            android:id="@+id/nomCarte"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textColor="@color/colorBlue"
+            android:inputType="textPersonName"
+            android:text=""
+            android:textSize="14dp"
+            android:maxLength="12"
+            android:layout_margin="5dp"/>
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Insérer une photo:"
+            android:textSize="14dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"/>
+
+        <EditText
+            android:id="@+id/photoCarte"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textColor="@color/colorBlue"
+            android:textSize="14dp"
+            android:inputType="textPersonName"
+            android:text=""
+            android:maxLength="50"
+            android:layout_margin="5dp"/>
+
+        <Button
+            android:id="@+id/btnLanguage"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Langue"
+            android:layout_margin="20dp"
+            android:textColor="@color/colorWhite"
+            android:background="@color/colorBlack"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rareté : "
+            android:textSize="14dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"/>
+
+        <EditText
+            android:id="@+id/rareCarte"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textColor="@color/colorBlue"
+            android:textSize="14dp"
+            android:maxLength="12"
+            android:inputType="textPassword"
+            android:layout_margin="5dp"/>
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reverse "
+            android:textSize="14dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"/>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RadioButton
+                android:id="@+id/reverCarte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Oui" />
+
+            <RadioButton
+                android:id="@+id/reverCarte1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Non" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Holo "
+            android:textSize="14dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"/>
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RadioButton
+                android:id="@+id/holoCarte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Oui" />
+
+            <RadioButton
+                android:id="@+id/holoCarte1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Non" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btnEtat"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Langue"
+            android:layout_margin="20dp"
+            android:textColor="@color/colorWhite"
+            android:background="@color/colorBlack"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="20dp"
+            android:text="Prix "
+            android:textSize="14dp" />
+
+        <EditText
+            android:id="@+id/prixCarte"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textColor="@color/colorBlue"
+            android:textSize="14dp"
+            android:inputType="textPersonName"
+            android:text=""
+            android:maxLength="50"
+            android:layout_margin="5dp"/>
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nombre de carte possedé"
+            android:textSize="14dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"/>
+
+        <EditText
+            android:id="@+id/nbCarte"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textColor="@color/colorBlue"
+            android:textSize="14dp"
+            android:inputType="textPersonName"
+            android:text=""
+            android:maxLength="50"
+            android:layout_margin="5dp"/>
+
+        <Button
+            android:id="@+id/btnCollection"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Langue"
+            android:layout_margin="20dp"
+            android:textColor="@color/colorWhite"
+            android:background="@color/colorBlack"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:id="@+id/btnCollectionPerso"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Langue"
+            android:layout_margin="20dp"
+            android:textColor="@color/colorWhite"
+            android:background="@color/colorBlack"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:id="@+id/btnCreateCarte"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:text="Créer le collectionneur"
+            android:layout_margin="20dp"
+            android:textColor="@color/colorWhite"
+            android:background="@color/colorBlack"
+            android:layout_gravity="center"/>
+
+
+
+
+
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

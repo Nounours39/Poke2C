@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.example.lucas.poke2c.activity.ActivityCollection;
 import com.example.lucas.poke2c.activity.ActivityCreateUser;
 import com.example.lucas.poke2c.activity.ActivityInfo;
+import com.example.lucas.poke2c.database.DBManagerCarte;
 import com.example.lucas.poke2c.database.DBManagerUtilisateur;
 import com.example.lucas.poke2c.model.Information;
 import com.example.lucas.poke2c.model.Utilisateur;
