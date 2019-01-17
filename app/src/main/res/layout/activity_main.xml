@@ -51,7 +51,8 @@
                             android:id="@+id/ima1"
                             android:layout_width="125dp"
                             android:layout_height="125dp"
-                            app:srcCompat="@drawable/pikachu" />
+                            android:src="@drawable/icon_pokemon"
+                             />
 
                         <LinearLayout
                             android:layout_width="125dp"
@@ -76,7 +77,7 @@
                             android:id="@+id/ima2"
                             android:layout_width="125dp"
                             android:layout_height="125dp"
-                            app:srcCompat="@drawable/salameche" />
+                             />
 
                         <LinearLayout
                             android:layout_width="125dp"
@@ -111,7 +112,7 @@
                             android:id="@+id/ima3"
                             android:layout_width="125dp"
                             android:layout_height="125dp"
-                            app:srcCompat="@drawable/bulbizarre" />
+                             />
 
                         <LinearLayout
                             android:layout_width="125dp"
@@ -137,7 +138,7 @@
                             android:id="@+id/ima4"
                             android:layout_width="125dp"
                             android:layout_height="125dp"
-                            app:srcCompat="@drawable/carapuce" />
+                             />
 
                         <LinearLayout
                             android:layout_width="125dp"

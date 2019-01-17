@@ -2,4 +2,5 @@
     <string name="app_name">Poke2C</string>
     <string name="info"><b>- <u>Information des mises à jour</u> : </b></string>
     <string name="createUser"><b>- <u>Création d\'un collectionneur</u> : </b></string>
+    <string name="collection">Collection</string>
 </resources>

@@ -56,17 +56,17 @@ public class ActivityCreateUser extends AppCompatActivity {
                 EditText editTextLogin = findViewById(R.id.loginUser);
                 EditText editTextMdp = findViewById(R.id.mdpUser);
                 if (!editTextNom.getText().toString().equals("") && !editTextLogin.getText().toString().equals("") && !editTextMdp.getText().toString().equals("")) {
-                    //if(editTextNom.getText().length() <= 4 && editTextLogin.getText().toString().trim().length() < 5 && editTextMdp.getText().toString().trim().length() < 5){
-                            DBManagerUtilisateur.init(context);
-                            dbManagerUtilisateur = DBManagerUtilisateur.getInstance();
+                    if(editTextNom.getText().length() < 6 && editTextLogin.getText().length() < 6 && editTextMdp.getText().length() < 6){
+                        Toast.makeText(ActivityCreateUser.this, "Un des champs saisis est trop cours, nom : 4 caractères, login : 6 caractères, mdp : 6 caractères !", Toast.LENGTH_LONG).show();
+                   }else{
+                        DBManagerUtilisateur.init(context);
+                        dbManagerUtilisateur = DBManagerUtilisateur.getInstance();
 
-                            util = new Utilisateur(nom.getText().toString(),desc.getText().toString(),login.getText().toString(),mdp.getText().toString());
-                            dbManagerUtilisateur.createUtilisateur(util);
-                            startActivity(create);
-                            finish();
-                   //}else{
-                        //Toast.makeText(ActivityCreateUser.this, "Un des champs saisis est trop cours, nom : 4 caractères, login : 6 caractères, mdp : 6 caractères !", Toast.LENGTH_LONG).show();
-                    //}
+                        util = new Utilisateur(nom.getText().toString(),desc.getText().toString(),login.getText().toString(),mdp.getText().toString(), "");
+                        dbManagerUtilisateur.createUtilisateur(util);
+                        startActivity(create);
+                        finish();
+                       }
                 } else {
                     Toast.makeText(ActivityCreateUser.this, "Tous les champs ne sont pas remplis, veuillez tous les saisir ! ", Toast.LENGTH_LONG).show();
                 }

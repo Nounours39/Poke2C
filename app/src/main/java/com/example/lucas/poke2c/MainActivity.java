@@ -3,6 +3,7 @@ package com.example.lucas.poke2c;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -63,13 +64,11 @@ public class MainActivity extends AppCompatActivity {
         DBManagerUtilisateur.init(this);
         dbManagerUtilisateur = DBManagerUtilisateur.getInstance();
 
+
         lesUsers =  dbManagerUtilisateur.getAllUtilisateurs();
 
         if(lesUsers.size()==0){
             ima1.setVisibility(View.INVISIBLE);
-            ima2.setVisibility(View.INVISIBLE);
-            ima3.setVisibility(View.INVISIBLE);
-            ima4.setVisibility(View.INVISIBLE);
             name1.setText("");
             name2.setText("");
             name3.setText("");
@@ -79,9 +78,6 @@ public class MainActivity extends AppCompatActivity {
         else if(lesUsers.size()==1)
         {
             ima1.setVisibility(View.VISIBLE);
-            ima2.setVisibility(View.INVISIBLE);
-            ima3.setVisibility(View.INVISIBLE);
-            ima4.setVisibility(View.INVISIBLE);
             name1.setText(lesUsers.get(0).getName());
             name2.setText("");
             name3.setText("");
@@ -90,10 +86,6 @@ public class MainActivity extends AppCompatActivity {
         }
         else if(lesUsers.size()==2)
         {
-            ima1.setVisibility(View.VISIBLE);
-            ima2.setVisibility(View.VISIBLE);
-            ima3.setVisibility(View.INVISIBLE);
-            ima4.setVisibility(View.INVISIBLE);
             name1.setText(lesUsers.get(0).getName());
             name2.setText(lesUsers.get(1).getName());
             name3.setText("");
@@ -102,10 +94,6 @@ public class MainActivity extends AppCompatActivity {
         }
         else if(lesUsers.size()==3)
         {
-            ima1.setVisibility(View.VISIBLE);
-            ima2.setVisibility(View.VISIBLE);
-            ima3.setVisibility(View.VISIBLE);
-            ima4.setVisibility(View.INVISIBLE);
             name1.setText(lesUsers.get(0).getName());
             name2.setText(lesUsers.get(1).getName());
             name3.setText(lesUsers.get(2).getName());
@@ -114,10 +102,6 @@ public class MainActivity extends AppCompatActivity {
         }
         else if(lesUsers.size()==4)
         {
-            ima1.setVisibility(View.VISIBLE);
-            ima2.setVisibility(View.VISIBLE);
-            ima3.setVisibility(View.VISIBLE);
-            ima4.setVisibility(View.VISIBLE);
             name1.setText(lesUsers.get(0).getName());
             name2.setText(lesUsers.get(1).getName());
             name3.setText(lesUsers.get(2).getName());
@@ -140,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         if (login.getText().toString().equals(lesUsers.get(0).getLogin().toString())) {
                             if (mdp.getText().toString().equals(lesUsers.get(0).getMdp().toString())) {
-                                Utilisateur user = new Utilisateur(lesUsers.get(0).getName().toString(), lesUsers.get(0).getDescription().toString(), login.getText().toString(), mdp.getText().toString());
+                                Utilisateur user = new Utilisateur(lesUsers.get(0).getName().toString(), lesUsers.get(0).getDescription().toString(), login.getText().toString(), mdp.getText().toString(),"");
                                 intentConnexion.putExtra(Intent.EXTRA_USER, user);
                                 startActivity(intentConnexion);
                                 dialog.dismiss();
@@ -171,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         if (login.getText().toString().equals(lesUsers.get(1).getLogin().toString())) {
                             if (mdp.getText().toString().equals(lesUsers.get(1).getMdp().toString())) {
-                                Utilisateur user = new Utilisateur(lesUsers.get(1).getName().toString(), lesUsers.get(1).getDescription().toString(), login.getText().toString(), mdp.getText().toString());
+                                Utilisateur user = new Utilisateur(lesUsers.get(1).getName().toString(), lesUsers.get(1).getDescription().toString(), login.getText().toString(), mdp.getText().toString(),"");
                                 intentConnexion.putExtra(Intent.EXTRA_USER, user);
                                 startActivity(intentConnexion);
                                 dialog.dismiss();
@@ -202,7 +186,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         if (login.getText().toString().equals(lesUsers.get(2).getLogin().toString())) {
                             if (mdp.getText().toString().equals(lesUsers.get(2).getMdp().toString())) {
-                                Utilisateur user = new Utilisateur(lesUsers.get(2).getName().toString(), lesUsers.get(2).getDescription().toString(), login.getText().toString(), mdp.getText().toString());
+                                Utilisateur user = new Utilisateur(lesUsers.get(2).getName().toString(), lesUsers.get(2).getDescription().toString(), login.getText().toString(), mdp.getText().toString(),"");
                                 intentConnexion.putExtra(Intent.EXTRA_USER, user);
                                 startActivity(intentConnexion);
                                 dialog.dismiss();
@@ -233,7 +217,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View v) {
                         if (login.getText().toString().equals(lesUsers.get(3).getLogin().toString())) {
                             if (mdp.getText().toString().equals(lesUsers.get(3).getMdp().toString())) {
-                                Utilisateur user = new Utilisateur(lesUsers.get(3).getName().toString(), lesUsers.get(3).getDescription().toString(), login.getText().toString(), mdp.getText().toString());
+                                Utilisateur user = new Utilisateur(lesUsers.get(3).getName().toString(), lesUsers.get(3).getDescription().toString(), login.getText().toString(), mdp.getText().toString(),"");
                                 intentConnexion.putExtra(Intent.EXTRA_USER, user);
                                 startActivity(intentConnexion);
                                 dialog.dismiss();

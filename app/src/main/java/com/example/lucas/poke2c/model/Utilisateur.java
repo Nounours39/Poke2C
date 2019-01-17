@@ -18,12 +18,16 @@ public class Utilisateur implements Parcelable {
     private String login;
     @DatabaseField(columnName = "mdp", canBeNull = false)
     private String mdp;
+    @DatabaseField(columnName = "lien_image", canBeNull = false)
+    private String lienImage;
 
-    public Utilisateur(String name, String description, String login, String mdp){
+
+    public Utilisateur(String name, String description, String login, String mdp, String lienImage){
         this.name = name;
         this.description = description;
         this.login = login;
         this.mdp = mdp;
+        this.lienImage = lienImage;
     }
 
     public Utilisateur(){
@@ -36,6 +40,7 @@ public class Utilisateur implements Parcelable {
         description = in.readString();
         login = in.readString();
         mdp = in.readString();
+        lienImage = in.readString();
     }
 
     public static final Creator<Utilisateur> CREATOR = new Creator<Utilisateur>() {
@@ -85,6 +90,13 @@ public class Utilisateur implements Parcelable {
         this.mdp = mdp;
     }
 
+    public String getLienImage() {
+        return lienImage;
+    }
+    public void setLienImage(String lienImage) {
+        this.lienImage = lienImage;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -97,5 +109,6 @@ public class Utilisateur implements Parcelable {
         parcel.writeString(description);
         parcel.writeString(login);
         parcel.writeString(mdp);
+        parcel.writeString(lienImage);
     }
 }
