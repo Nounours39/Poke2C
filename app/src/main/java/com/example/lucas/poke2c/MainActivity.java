@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -67,9 +68,14 @@ public class MainActivity extends AppCompatActivity {
 
 
         lesUsers =  dbManagerUtilisateur.getAllUtilisateurs();
-
+        for (int i = 0; i < lesUsers.size(); i++) {
+            Log.d("Ici", "User : " + lesUsers.get(i));
+        }
         if(lesUsers.size()==0){
             ima1.setVisibility(View.INVISIBLE);
+            ima2.setVisibility(View.INVISIBLE);
+            ima3.setVisibility(View.INVISIBLE);
+            ima4.setVisibility(View.INVISIBLE);
             name1.setText("");
             name2.setText("");
             name3.setText("");
@@ -79,6 +85,9 @@ public class MainActivity extends AppCompatActivity {
         else if(lesUsers.size()==1)
         {
             ima1.setVisibility(View.VISIBLE);
+            ima2.setVisibility(View.INVISIBLE);
+            ima3.setVisibility(View.INVISIBLE);
+            ima4.setVisibility(View.INVISIBLE);
             name1.setText(lesUsers.get(0).getName());
             name2.setText("");
             name3.setText("");
@@ -87,6 +96,10 @@ public class MainActivity extends AppCompatActivity {
         }
         else if(lesUsers.size()==2)
         {
+            ima1.setVisibility(View.VISIBLE);
+            ima2.setVisibility(View.VISIBLE);
+            ima3.setVisibility(View.INVISIBLE);
+            ima4.setVisibility(View.INVISIBLE);
             name1.setText(lesUsers.get(0).getName());
             name2.setText(lesUsers.get(1).getName());
             name3.setText("");
@@ -95,6 +108,10 @@ public class MainActivity extends AppCompatActivity {
         }
         else if(lesUsers.size()==3)
         {
+            ima1.setVisibility(View.VISIBLE);
+            ima2.setVisibility(View.VISIBLE);
+            ima3.setVisibility(View.VISIBLE);
+            ima4.setVisibility(View.INVISIBLE);
             name1.setText(lesUsers.get(0).getName());
             name2.setText(lesUsers.get(1).getName());
             name3.setText(lesUsers.get(2).getName());
@@ -103,6 +120,10 @@ public class MainActivity extends AppCompatActivity {
         }
         else if(lesUsers.size()==4)
         {
+            ima1.setVisibility(View.VISIBLE);
+            ima2.setVisibility(View.VISIBLE);
+            ima3.setVisibility(View.VISIBLE);
+            ima4.setVisibility(View.VISIBLE);
             name1.setText(lesUsers.get(0).getName());
             name2.setText(lesUsers.get(1).getName());
             name3.setText(lesUsers.get(2).getName());
