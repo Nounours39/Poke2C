@@ -8,7 +8,7 @@ import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "utilisateur")
 public class Utilisateur implements Parcelable {
-    @DatabaseField(generatedId = true)
+    @DatabaseField(columnName = "id", canBeNull = false, generatedId = true)
     private int id;
     @DatabaseField(columnName = "nom", canBeNull = false)
     private String name;

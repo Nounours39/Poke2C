@@ -30,8 +30,14 @@ public class ActivityCreateUser extends AppCompatActivity {
     private Toolbar toolbar;
     private ImageView img;
     private TextView chemin;
+    private boolean val_img = false;
     private String imgPath;
     Context context = this;
+
+    private EditText nom;
+    private EditText desc;
+    private EditText login;
+    private EditText mdp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,18 +57,17 @@ public class ActivityCreateUser extends AppCompatActivity {
             }
         });
 
-        final Intent create = new Intent(this, MainActivity.class);
-        final EditText nom = findViewById(R.id.nomUser);
-        final EditText desc = findViewById(R.id.descrUser);
-        final EditText login = findViewById(R.id.loginUser);
-        final EditText mdp = findViewById(R.id.mdpUser);
+        nom = findViewById(R.id.nomUser);
+        desc = findViewById(R.id.descrUser);
+        login = findViewById(R.id.loginUser);
+        mdp = findViewById(R.id.mdpUser);
         chemin = findViewById(R.id.chemin);
         img = findViewById(R.id.imgProfil);
 
-        int d2 = getResources().getIdentifier("icon_pokemon", "drawable", getPackageName());
+        int d2 = getResources().getIdentifier("ic_launcher", "mipmap", getPackageName());
         Drawable d = getResources().getDrawable(d2);
         img.setImageDrawable(d);
-
+        imgPath = "";
         Button btnCreate = findViewById(R.id.btnCreateUser);
 
         createOnClickPhoto();
@@ -70,24 +75,26 @@ public class ActivityCreateUser extends AppCompatActivity {
         btnCreate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText editTextNom = findViewById(R.id.nomUser);
-                EditText editTextDescription = findViewById(R.id.descrUser);
-                EditText editTextLogin = findViewById(R.id.loginUser);
-                EditText editTextMdp = findViewById(R.id.mdpUser);
-                if (!editTextNom.getText().toString().equals("") && !editTextLogin.getText().toString().equals("") && !editTextMdp.getText().toString().equals("")) {
-                    if(editTextNom.getText().length() < 6 && editTextLogin.getText().length() < 6 && editTextMdp.getText().length() < 6){
+                if (!nom.getText().toString().equals("") && !login.getText().toString().equals("") && !mdp.getText().toString().equals("")) {
+                    if(nom.getText().length() < 6 && login.getText().length() < 6 && mdp.getText().length() < 6){
                         Toast.makeText(ActivityCreateUser.this, "Un des champs saisis est trop cours, nom : 4 caractères, login : 6 caractères, mdp : 6 caractères !", Toast.LENGTH_LONG).show();
                    }else{
-                        DBManagerUtilisateur.init(context);
-                        dbManagerUtilisateur = DBManagerUtilisateur.getInstance();
+                        if(val_img = false){
+                            Toast.makeText(ActivityCreateUser.this, "Il doit y avoir une image de profil séléctionnée !", Toast.LENGTH_LONG).show();
+                        }else {
+                            DBManagerUtilisateur.init(context);
+                            dbManagerUtilisateur = DBManagerUtilisateur.getInstance();
+                            final Intent create = new Intent(getApplicationContext(), MainActivity.class);
 
-                        util = new Utilisateur(nom.getText().toString(),desc.getText().toString(),login.getText().toString(),mdp.getText().toString(), imgPath);
-                        dbManagerUtilisateur.createUtilisateur(util);
-                        startActivity(create);
-                        finish();
-                       }
+                            util = new Utilisateur(nom.getText().toString(), desc.getText().toString(), login.getText().toString(), mdp.getText().toString(), imgPath);
+                            dbManagerUtilisateur.createUtilisateur(util);
+                            startActivity(create);
+                            finish();
+                        }
+                   }
                 } else {
-                    Toast.makeText(ActivityCreateUser.this, "Tous les champs ne sont pas remplis, veuillez tous les saisir ! ", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(ActivityCreateUser.this, "Tous les champs ne sont pas remplis, veuillez tous les saisir ! ", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ActivityCreateUser.this, "Un des champs de saisi n'est pas rempli ! ", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -119,6 +126,7 @@ public class ActivityCreateUser extends AppCompatActivity {
             img.setImageBitmap(image);
             chemin.setText(imgPath);
             Toast.makeText(this, "Chemin : " + imgPath, Toast.LENGTH_SHORT).show();
+            val_img = true;
         }else{
             Toast.makeText(this, "Aucune image séléctionnée ! ", Toast.LENGTH_SHORT).show();
         }

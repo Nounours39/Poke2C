@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/profil"
+            android:icon="@drawable/profil"
+            android:title="@string/profil">
+        </item>
+        <item
+            android:id="@+id/stat"
+            android:icon="@drawable/stat"
+            android:title="@string/stat">
+        </item>
+        <item android:title="Données : ">
+            <menu>
+                <item
+                    android:id="@+id/collection"
+                    android:icon="@drawable/collection"
+                    android:title="@string/collection">
+                </item>
+                <item
+                    android:id="@+id/collectionperso"
+                    android:icon="@drawable/collection_perso"
+                    android:title="@string/collectionperso">
+                </item>
+                <item
+                    android:id="@+id/carte"
+                    android:icon="@drawable/carte_pokemon"
+                    android:title="@string/carte">
+                </item>
+            </menu>
+        </item>
+        <item android:title="En ligne : ">
+            <menu>
+                <item
+                    android:id="@+id/combattre"
+                    android:icon="@drawable/combattant"
+                    android:title="@string/combattant">
+                </item>
+                <item
+                    android:id="@+id/chat"
+                    android:icon="@drawable/discussion"
+                    android:title="@string/chat">
+                </item>
+            </menu>
+        </item>
+        <item android:title="Autre : ">
+            <menu>
+                <item
+                    android:id="@+id/propos"
+                    android:icon="@drawable/a_propos"
+                    android:title="@string/apropos">
+                </item>
+                <item
+                    android:id="@+id/deconnexion"
+                    android:icon="@drawable/deconnexion"
+                    android:title="@string/deconnexion">
+                </item>
+            </menu>
+        </item>
+    </group>
+</menu>

@@ -41,6 +41,15 @@ public class DBManagerUtilisateur {
         }
     }
 
+    public Utilisateur getUtilisateur(int id) {
+        try {
+            return getHelper().getUtilisateurDao().queryForId(id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new Utilisateur();
+        }
+    }
+
     public long createUtilisateur(Utilisateur utilisateur) {
         try {
             getHelper().getUtilisateurDao().create(utilisateur);

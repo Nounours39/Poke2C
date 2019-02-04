@@ -1,6 +1,21 @@
 <resources>
     <string name="app_name">Poke2C</string>
     <string name="info"><b>- <u>Information des mises à jour</u> : </b></string>
-    <string name="createUser"><b>- <u>Création d\'un collectionneur</u> : </b></string>
+    <string name="createUser"><b><u>Création d\'un collectionneur</u> : </b></string>
+    <string name="createCollection"><b><u>Création d\'une collection</u> : </b></string>
+    <string name="createLangue"><b><u>Création d\'une langue</u> : </b></string>
+    <string name="createCategorie"><b><u>Création d\'une catégorie</u> : </b></string>
+
+    <string name="profil">Mon profil</string>
+    <string name="stat">Statistiques</string>
     <string name="collection">Collection</string>
+    <string name="collectionperso">Collection perso</string>
+    <string name="carte">Carte Pokemon</string>
+    <string name="combattant">Combattre</string>
+    <string name="chat">Discussion</string>
+    <string name="apropos">A propos</string>
+    <string name="deconnexion">Déconnexion</string>
+
+    <string name="ouvert">Ouvert</string>
+    <string name="fermé">Fermé</string>
 </resources>

@@ -26,6 +26,8 @@ public class CartePokemon {
     private Etat etat;
     @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = "langue")
     private Langue langue;
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = "user")
+    private Utilisateur user;
 
     public CartePokemon(){
 

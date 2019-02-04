@@ -6,8 +6,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 import com.example.lucas.poke2c.model.CartePokemon;
+import com.example.lucas.poke2c.model.Categorie;
 import com.example.lucas.poke2c.model.CollectionN;
+import com.example.lucas.poke2c.model.Etat;
 import com.example.lucas.poke2c.model.Information;
+import com.example.lucas.poke2c.model.Langue;
 import com.example.lucas.poke2c.model.Utilisateur;
 import com.j256.ormlite.android.apptools.OrmLiteSqliteOpenHelper;
 import com.j256.ormlite.dao.Dao;
@@ -23,6 +26,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private Dao<Information, Integer> InformationDAO = null;
     private Dao<Utilisateur, Integer> UtilisateurDAO = null;
     private Dao<CartePokemon, Integer> CartePokemonDAO = null;
+    private Dao<Langue, Integer> LangueDAO = null;
+    private Dao<Etat, Integer> EtatDAO = null;
+    private Dao<Categorie, Integer> CategorieDAO = null;
 
 
     /** CONSTANT
@@ -43,6 +49,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.createTable(connectionSource, Information.class);
             TableUtils.createTable(connectionSource, Utilisateur.class);
             TableUtils.createTable(connectionSource, CartePokemon.class);
+            TableUtils.createTable(connectionSource, Langue.class);
+            TableUtils.createTable(connectionSource, Etat.class);
+            TableUtils.createTable(connectionSource, Categorie.class);
             Log.i(DatabaseHelper.class.getName(), "Les tables ont été créé ! ");
         } catch (java.sql.SQLException e) {
             e.printStackTrace();
@@ -58,6 +67,9 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.dropTable(connectionSource, Information.class, true);
             TableUtils.dropTable(connectionSource, Utilisateur.class, true);
             TableUtils.dropTable(connectionSource, CartePokemon.class, true);
+            TableUtils.dropTable(connectionSource, Langue.class, true);
+            TableUtils.dropTable(connectionSource, Etat.class, true);
+            TableUtils.dropTable(connectionSource, Categorie.class, true);
             Log.i(DatabaseHelper.class.getName(), "Les tables ont été supprimé ! ");
             onCreate(sqLiteDatabase,connectionSource);
         } catch (SQLException e) {
@@ -113,5 +125,36 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
         return CartePokemonDAO;
     }
 
+    public Dao<Langue, Integer> getLangueDao() {
+        if (LangueDAO == null) {
+            try {
+                LangueDAO = getDao(Langue.class);
+            }catch (java.sql.SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return LangueDAO;
+    }
 
+    public Dao<Etat, Integer> getEtatDao() {
+        if (EtatDAO == null) {
+            try {
+                EtatDAO = getDao(Etat.class);
+            }catch (java.sql.SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return EtatDAO;
+    }
+
+    public Dao<Categorie, Integer> getCategorieDao() {
+        if (CategorieDAO == null) {
+            try {
+                CategorieDAO = getDao(Categorie.class);
+            }catch (java.sql.SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return CategorieDAO;
+    }
 }

@@ -14,6 +14,8 @@ public class CollectionPerso {
     private int nombre_max;
     @DatabaseField(columnName = "iconid", canBeNull = false)
     private int iconId;
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = "user")
+    private Utilisateur user;
 
     public CollectionPerso(){
 

@@ -18,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorBlack"
+            android:theme="@style/Base.ThemeOverlay.AppCompat.Dark.ActionBar"
             android:minHeight="?attr/actionBarSize"
             />
 
@@ -44,7 +45,6 @@
             android:orientation="vertical"
             android:paddingTop="5dp">
 
-
             <ListView
                 android:id="@+id/listViewInfo"
                 android:layout_width="match_parent"
@@ -53,9 +53,6 @@
                 android:divider="@color/colorBlack"
                 android:dividerHeight="2dp"
                 android:padding="10dp" />
-
-
-
 
         </LinearLayout>
     </LinearLayout>

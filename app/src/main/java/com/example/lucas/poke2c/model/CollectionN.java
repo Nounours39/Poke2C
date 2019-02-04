@@ -15,21 +15,24 @@ public class CollectionN {
     private String nom;
     @DatabaseField(columnName = "nombre_max", canBeNull = false)
     private int nombre_max;
-    @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = "icon")
-    private Icon icon;
+    @DatabaseField(columnName = "icon")
+    private String icon;
     @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = "langue")
     private Langue langue;
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = "user")
+    private Utilisateur user;
     @ForeignCollectionField
     Collection<CartePokemon> cartepokemon;
 
     public CollectionN(){
 
     }
-    public CollectionN(String nom, int nombre_max, Icon icon, Langue langue){
+    public CollectionN(String nom, int nombre_max, String icon, Langue langue, Utilisateur user){
         this.nom = nom;
         this.nombre_max = nombre_max;
         this.icon = icon;
         this.langue = langue;
+        this.user = user;
     }
 
     public long getId() {
@@ -53,10 +56,10 @@ public class CollectionN {
         this.nombre_max = nombre_max;
     }
 
-    public Icon getIcon() {
+    public String getIcon() {
         return icon;
     }
-    public void setIcon(Icon icon) {
+    public void setIcon(String icon) {
         this.icon = icon;
     }
 
@@ -65,5 +68,12 @@ public class CollectionN {
     }
     public void setLangue(Langue langue) {
         this.langue = langue;
+    }
+
+    public Utilisateur getUser() {
+        return user;
+    }
+    public void setUser(Utilisateur user) {
+        this.user = user;
     }
 }

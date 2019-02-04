@@ -51,7 +51,6 @@
                             android:id="@+id/ima1"
                             android:layout_width="125dp"
                             android:layout_height="125dp"
-                            android:src="@drawable/icon_pokemon"
                              />
 
                         <LinearLayout

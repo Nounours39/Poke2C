@@ -6,20 +6,29 @@
         app:showAsAction="always"
         >
     </item>
-    <item
-        android:title="Menu d\'ajout"
-        app:showAsAction="never">
-    </item>
-    <item
-        android:id="@+id/action_delete"
-        android:title="Ajouter une collection"
-        app:showAsAction="never"></item>
-    <item
-        android:id="@+id/action_add"
-        android:title="Ajouter une collection perso"
-        app:showAsAction="never"></item>
-    <item
-        android:id="@+id/action_edit"
-        android:title="Ajouter une carte"
-        app:showAsAction="never"></item>
+    <group>
+        <item android:title="Menu d\'ajout : "/>
+        <item
+            android:id="@+id/action_add_coll"
+            android:title="Ajouter une collection"
+            app:showAsAction="never"></item>
+        <item
+            android:id="@+id/action_add_coll_perso"
+            android:title="Ajouter une collection perso"
+            app:showAsAction="never"></item>
+        <item
+            android:id="@+id/action_add_carte"
+            android:title="Ajouter une carte"
+            app:showAsAction="never"></item>
+        <item
+            android:id="@+id/action_add_categorie"
+            android:title="Ajouter une categorie"
+            app:showAsAction="never"></item>
+        <item
+            android:id="@+id/action_add_langue"
+            android:title="Ajouter une langue"
+            app:showAsAction="never"></item>
+    </group>
+
+
 </menu>

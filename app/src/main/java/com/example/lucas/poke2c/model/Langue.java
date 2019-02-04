@@ -9,13 +9,16 @@ public class Langue {
     private int id;
     @DatabaseField(columnName = "nom", canBeNull = false)
     private String nom;
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = "user")
+    private Utilisateur user;
 
     public Langue(){
 
     }
 
-    public Langue(String nom) {
+    public Langue(String nom, Utilisateur user) {
         this.nom = nom;
+        this.user = user;
     }
 
     public int getId() {
@@ -30,5 +33,17 @@ public class Langue {
     }
     public void setNom(String nom) {
         this.nom = nom;
+    }
+
+    public Utilisateur getUser() {
+        return user;
+    }
+    public void setUser(Utilisateur user) {
+        this.user = user;
+    }
+
+    @Override
+    public String toString(){
+        return this.nom;
     }
 }
