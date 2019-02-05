@@ -7,20 +7,19 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.lucas.poke2c.model.CollectionN;
 
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class RecyclerViewAdapterColl extends RecyclerView.Adapter<RecyclerViewAdapterColl.ViewHolder> {
     private int recyclerItemRes; //id ressource items du recyclerView
     private List<CollectionN> data; // les données à afficher
     private Context context; // le contexte de l’application
 
     //Constructeur de notre classe
-    public RecyclerViewAdapter(int recyclerItemRes, List<CollectionN> data, Context
+    public RecyclerViewAdapterColl(int recyclerItemRes, List<CollectionN> data, Context
             context) {
         this.recyclerItemRes = recyclerItemRes;
         this.data = data;
@@ -38,7 +37,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     //Méthode à surcharger : mappage du nom affiché en fonction de la place de l’élément
     @Override
-    public void onBindViewHolder(RecyclerViewAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerViewAdapterColl.ViewHolder holder, int position) {
         holder.name.setText(data.get(position).getNom());
         //holder.icon.setImageDrawable(null);
     }

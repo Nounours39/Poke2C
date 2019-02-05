@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -37,7 +38,7 @@ public class ActivityCreateCategorie extends AppCompatActivity {
         edtNom = findViewById(R.id.edtNomCategorie);
         btnCreateCategorie = findViewById(R.id.btnCreateCategorie);
 
-        DBManagerLangue.init(this);
+        DBManagerCategorie.init(this);
         dbManagerCategorie = DBManagerCategorie.getInstance();
 
         toolbarCategorie = findViewById(R.id.toolbar);
@@ -59,6 +60,7 @@ public class ActivityCreateCategorie extends AppCompatActivity {
             public void onClick(View view) {
                 if(edtNom.getText().toString()!=null){
                     final Intent intentCreateCategorie = new Intent(getApplicationContext(), ActivityCollection.class);
+                    Log.e("Error", user.getName()+" - "+user.getId());
                     lesCategories = dbManagerCategorie.getAllCategoriesByUser(user);
                     categorie = new Categorie();
                     categorie.setCategorie(edtNom.getText().toString());

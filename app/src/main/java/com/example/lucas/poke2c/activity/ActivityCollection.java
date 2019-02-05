@@ -5,9 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -18,30 +16,29 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lucas.poke2c.MainActivity;
 import com.example.lucas.poke2c.R;
-import com.example.lucas.poke2c.RecyclerViewAdapter;
+import com.example.lucas.poke2c.RecyclerViewAdapterCate;
+import com.example.lucas.poke2c.RecyclerViewAdapterColl;
+import com.example.lucas.poke2c.database.DBManagerCategorie;
 import com.example.lucas.poke2c.database.DBManagerCollection;
 import com.example.lucas.poke2c.database.DBManagerEtat;
 import com.example.lucas.poke2c.database.DBManagerLangue;
 import com.example.lucas.poke2c.database.DBManagerUtilisateur;
+import com.example.lucas.poke2c.model.Categorie;
 import com.example.lucas.poke2c.model.CollectionN;
 import com.example.lucas.poke2c.model.Etat;
 import com.example.lucas.poke2c.model.Langue;
 import com.example.lucas.poke2c.model.Utilisateur;
 
 import java.util.List;
-import java.util.zip.Inflater;
 
 public class ActivityCollection extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
@@ -49,11 +46,10 @@ public class ActivityCollection extends AppCompatActivity implements NavigationV
     private DBManagerLangue dbManagerLangue;
     private DBManagerEtat dbManagerEtat;
     private DBManagerCollection dbManagerCollection;
+    private DBManagerCategorie dbManagerCategorie;
     private DrawerLayout drawer;
     private Toolbar toolbar;
     Context context;
-    private RecyclerView.Adapter adapterColl;
-    private RecyclerView.Adapter adapterCate;
 
     public SharedPreferences sharedPreferences;
     public static final String connecter = "Connecter";
@@ -62,17 +58,19 @@ public class ActivityCollection extends AppCompatActivity implements NavigationV
     public static final String idC = "id";
     public boolean bool = false;
 
-    private RecyclerView listColl;
-    private RecyclerView listCate;
-
-    private Utilisateur user;
+    private Utilisateur user = null;
     private List<Langue> langues;
     private List<Etat> etats;
     private List<CollectionN> lesCollections;
+    private List<Categorie> lesCategories;
 
-    private RecyclerView recyclerView;
-    private RecyclerViewAdapter adapter;
-    private LinearLayoutManager linearLayoutManager;
+    private RecyclerView recyclerViewCo;
+    private RecyclerViewAdapterColl adapterCo;
+    private LinearLayoutManager linearLayoutManagerCo;
+
+    private RecyclerView recyclerViewCa;
+    private RecyclerViewAdapterCate adapterCa;
+    private LinearLayoutManager linearLayoutManagerCa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,6 +88,8 @@ public class ActivityCollection extends AppCompatActivity implements NavigationV
             dbManagerEtat = DBManagerEtat.getInstance();
             DBManagerCollection.init(this);
             dbManagerCollection = DBManagerCollection.getInstance();
+            DBManagerCategorie.init(this);
+            dbManagerCategorie = DBManagerCategorie.getInstance();
             recupererUser();
             createDataOnDownload();
 
@@ -132,22 +132,38 @@ public class ActivityCollection extends AppCompatActivity implements NavigationV
 
 
             lesCollections = dbManagerCollection.getAllCollections();
+            lesCategories = dbManagerCategorie.getAllCategories();
 
             for(int i = 0; i < lesCollections.size();i++){
                 Toast.makeText(this, lesCollections.get(i).getNom(), Toast.LENGTH_SHORT).show();
             }
 
+            ////Les categories
             // chercher l'element qui a l'id my_recycler_view
-            recyclerView = findViewById(R.id.my_recycler_view_coll);
+            recyclerViewCa = findViewById(R.id.my_recycler_view_cate);
             // change pas la taille de la liste (deroulement)
-            recyclerView.setHasFixedSize(true);
+            recyclerViewCa.setHasFixedSize(true);
 
-            linearLayoutManager = new LinearLayoutManager(this);
+            linearLayoutManagerCa = new LinearLayoutManager(this);
             //raffrechir affichage
-            recyclerView.setLayoutManager(linearLayoutManager);
+            recyclerViewCa.setLayoutManager(linearLayoutManagerCa);
 
-            adapter = new RecyclerViewAdapter(R.layout.recycler_view_collection, lesCollections,this);
-            recyclerView.setAdapter(adapter);
+            adapterCa = new RecyclerViewAdapterCate(R.layout.recycler_view_categorie, lesCategories,this);
+            recyclerViewCa.setAdapter(adapterCa);
+
+            ////Les collections
+            /*View inflaterViewColl = getLayoutInflater().inflate(R.layout.recycler_view_collection,null);
+            // chercher l'element qui a l'id my_recycler_view
+            recyclerViewCo = inflaterViewColl.findViewById(R.id.my_recycler_view_coll);
+            // change pas la taille de la liste (deroulement)
+            recyclerViewCo.setHasFixedSize(true);
+
+            linearLayoutManagerCo = new LinearLayoutManager(this);
+            //raffrechir affichage
+            recyclerViewCo.setLayoutManager(linearLayoutManagerCo);
+
+            adapterCo = new RecyclerViewAdapterColl(R.layout.recycler_view_collection, lesCollections,this);
+            recyclerViewCo.setAdapter(adapterCo);*/
     }
 
     @Override
@@ -240,12 +256,14 @@ public class ActivityCollection extends AppCompatActivity implements NavigationV
             Bundle data = getIntent().getExtras();
             user = data.getParcelable(getIntent().EXTRA_USER);
             Toast.makeText(this, "Bienvenue " + user.getName(), Toast.LENGTH_SHORT).show();
+            Log.e("error", user.getId()+"");
         }else{
             Toast.makeText(this, "Error intent ! ", Toast.LENGTH_SHORT).show();
         }
     }
 
     public void createDataOnDownload(){
+        Log.e("Error", user.getId()+" - "+user.getName());
         langues = dbManagerLangue.getAllLanguesByUser(user);
         etats = dbManagerEtat.getAllEtats();
         if(langues.size()<2){

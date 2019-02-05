@@ -42,24 +42,13 @@ public class DBManagerCategorie {
     }
 
     public List<Categorie> getAllCategoriesByUser(Utilisateur user) {
-        List<Categorie> categories= new ArrayList<Categorie>();
-        List<Categorie> lesCategories = new ArrayList<Categorie>();
+        List<Categorie> categories;
         try {
-            categories = getHelper().getCategorieDao().queryForAll();
-            for(int i = 0; i < categories.size();i++){
-                if(categories.get(i).getUser().getId()==user.getId()){
-                    lesCategories.add(categories.get(i));
-                }else{
-                }
-            }
-            if(categories.size()==0){
-                return categories = getHelper().getCategorieDao().queryForAll();
-            }else{
-                return lesCategories;
-            }
+            categories = getHelper().getCategorieDao().queryForEq("user",user);
+            return categories;
         } catch (SQLException e) {
             e.printStackTrace();
-            return lesCategories;
+            return new ArrayList<Categorie>();
         }
     }
 

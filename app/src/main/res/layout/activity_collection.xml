@@ -32,11 +32,6 @@
                 android:layout_height="match_parent"
                 android:layout_width="match_parent"
                 android:id="@+id/my_recycler_view_cate"/>
-
-            <android.support.v7.widget.RecyclerView
-                android:layout_height="match_parent"
-                android:layout_width="match_parent"
-                android:id="@+id/my_recycler_view_coll"/>
         </FrameLayout>
 
     </LinearLayout>

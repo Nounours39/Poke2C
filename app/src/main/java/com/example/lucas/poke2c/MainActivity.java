@@ -397,9 +397,9 @@ public class MainActivity extends AppCompatActivity {
         int id = preferences.getInt(idC, 0);
         if(Connecter){
             final Intent intentConnexion = new Intent(this, ActivityCollection.class);
-            Log.i("Info 1 : id ", "l'id : " + id);
+            Log.e("Info 1 : id ", "l'id : " + id);
             Utilisateur user1 =  dbManagerUtilisateur.getUtilisateur(id);
-            Log.i("Info 2 : nom ", "l'utilisateur : " + user1.getName());
+            Log.e("Info 2 : nom ", "l'utilisateur : " + user1.getName());
             intentConnexion.putExtra(Intent.EXTRA_USER, user1);
             startActivity(intentConnexion);
             finish();

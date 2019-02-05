@@ -43,21 +43,10 @@ public class DBManagerLangue {
     }
 
     public List<Langue> getAllLanguesByUser(Utilisateur user) {
-        List<Langue> langues = new ArrayList<Langue>();
-        List<Langue> lesLangues = new ArrayList<Langue>();
+        List<Langue> langues;
         try {
-            langues = getHelper().getLangueDao().queryForAll();
-            for(int i = 0; i < langues.size();i++){
-                if(langues.get(i).getUser().getId()==user.getId()){
-                    lesLangues.add(langues.get(i));
-                }else{
-                }
-            }
-            if(langues.size()==0){
-                return langues = getHelper().getLangueDao().queryForAll();
-            }else{
-                return lesLangues;
-            }
+            langues = getHelper().getLangueDao().queryForEq("user", user);
+            return langues;
         } catch (SQLException e) {
             e.printStackTrace();
             return new ArrayList<Langue>();
