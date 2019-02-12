@@ -52,6 +52,23 @@ public class DBManagerCategorie {
         }
     }
 
+    public List<Categorie> getAllCategoriesByUserByCollection(Utilisateur user, boolean bool) {
+        List<Categorie> categories;
+        List<Categorie> lesCategories = new ArrayList<Categorie>();
+        try {
+            categories = getHelper().getCategorieDao().queryForEq("user",user);
+            for(int i =0; i<categories.size();i++){
+                if(categories.get(i).getPerso()==bool){
+                    lesCategories.add(categories.get(i));
+                }
+            }
+            return lesCategories;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return new ArrayList<Categorie>();
+        }
+    }
+
     public long createCategorie(Categorie categorie) {
         try {
             getHelper().getCategorieDao().create(categorie);

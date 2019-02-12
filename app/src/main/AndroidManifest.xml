@@ -39,7 +39,9 @@
         <activity android:name=".popup.Pop" />
         <activity android:name=".activity.ActivityCreateCollection" />
         <activity android:name=".activity.ActivityCreateLangue" />
-        <activity android:name=".activity.ActivityCreateCategorie"></activity>
+        <activity android:name=".activity.ActivityCreateCategorie" />
+        <activity android:name=".activity.ActivityCreateCollectionPerso" />
+        <activity android:name=".activity.ActivityCollectionPerso"></activity>
     </application>
 
 </manifest>

@@ -10,20 +10,18 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.lucas.poke2c.database.DBManagerLangue;
-import com.example.lucas.poke2c.database.DBManagerUtilisateur;
 import com.example.lucas.poke2c.model.CollectionN;
-import com.example.lucas.poke2c.model.Utilisateur;
+import com.example.lucas.poke2c.model.CollectionPerso;
 
 import java.util.List;
 
-public class RecyclerViewAdapterColl extends RecyclerView.Adapter<RecyclerViewAdapterColl.ViewHolder> {
+public class RecyclerViewAdapterPerso extends RecyclerView.Adapter<RecyclerViewAdapterPerso.ViewHolder> {
     private int recyclerItemRes; //id ressource items du recyclerView
-    private List<CollectionN> data; // les données à afficher
+    private List<CollectionPerso> data; // les données à afficher
     private Context context; // le contexte de l’application
 
     //Constructeur de notre classe
-    public RecyclerViewAdapterColl(int recyclerItemRes, List<CollectionN> data, Context context) {
+    public RecyclerViewAdapterPerso(int recyclerItemRes, List<CollectionPerso> data, Context context) {
         this.recyclerItemRes = recyclerItemRes;
         this.data = data;
         this.context = context;
@@ -40,12 +38,12 @@ public class RecyclerViewAdapterColl extends RecyclerView.Adapter<RecyclerViewAd
 
     //Méthode à surcharger : mappage du nom affiché en fonction de la place de l’élément
     @Override
-    public void onBindViewHolder(RecyclerViewAdapterColl.ViewHolder holder, int position) {
+    public void onBindViewHolder(RecyclerViewAdapterPerso.ViewHolder holder, int position) {
 
         holder.collection.setText(data.get(position).getNom());
         holder.categorie.setText(data.get(position).getCategorie().getCategorie());
         //holder.icon.setImageDrawable(null);
-        holder.nbCarteAvoir.setText(data.get(position).nbCarte()+"");
+        holder.nbCarteAvoir.setText(data.get(position).nbCartePerso()+"");
         holder.nbCarteColl.setText(data.get(position).getNombre_max()+"");
     }
 
@@ -69,11 +67,11 @@ public class RecyclerViewAdapterColl extends RecyclerView.Adapter<RecyclerViewAd
         public ViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
-            collection = itemView.findViewById(R.id.titleCollection);
-            categorie = itemView.findViewById(R.id.titleCategorie);
-            icon = itemView.findViewById(R.id.iconCollection);
-            nbCarteAvoir = itemView.findViewById(R.id.NbCarteAvoir);
-            nbCarteColl = itemView.findViewById(R.id.NbCarteCollection);
+            collection = itemView.findViewById(R.id.titleCollectionPerso);
+            categorie = itemView.findViewById(R.id.titleCategoriePerso);
+            icon = itemView.findViewById(R.id.iconCollectionPerso);
+            nbCarteAvoir = itemView.findViewById(R.id.NbCarteAvoirPerso);
+            nbCarteColl = itemView.findViewById(R.id.NbCarteCollectionPerso);
         }
 
 

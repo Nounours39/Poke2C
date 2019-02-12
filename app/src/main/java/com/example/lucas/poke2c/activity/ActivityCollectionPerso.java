@@ -1,6 +1,5 @@
 package com.example.lucas.poke2c.activity;
 
-import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,7 +17,6 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -29,28 +27,26 @@ import com.example.lucas.poke2c.MainActivity;
 import com.example.lucas.poke2c.R;
 import com.example.lucas.poke2c.RecyclerViewAdapterCate;
 import com.example.lucas.poke2c.RecyclerViewAdapterColl;
+import com.example.lucas.poke2c.RecyclerViewAdapterPerso;
 import com.example.lucas.poke2c.database.DBManagerCategorie;
 import com.example.lucas.poke2c.database.DBManagerCollection;
+import com.example.lucas.poke2c.database.DBManagerCollectionPerso;
 import com.example.lucas.poke2c.database.DBManagerEtat;
 import com.example.lucas.poke2c.database.DBManagerLangue;
 import com.example.lucas.poke2c.database.DBManagerUtilisateur;
 import com.example.lucas.poke2c.model.Categorie;
 import com.example.lucas.poke2c.model.CollectionN;
+import com.example.lucas.poke2c.model.CollectionPerso;
 import com.example.lucas.poke2c.model.Etat;
 import com.example.lucas.poke2c.model.Langue;
 import com.example.lucas.poke2c.model.Utilisateur;
 
 import java.util.List;
 
-import static com.example.lucas.poke2c.R.menu.menu;
-
-public class ActivityCollection extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class ActivityCollectionPerso extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private DBManagerUtilisateur dbManagerUtilisateur;
-    private DBManagerLangue dbManagerLangue;
-    private DBManagerEtat dbManagerEtat;
-    private DBManagerCollection dbManagerCollection;
-    private DBManagerCategorie dbManagerCategorie;
+    private DBManagerCollectionPerso dbManagerCollectionPerso;
     private DrawerLayout drawer;
     private Toolbar toolbar;
     Context context;
@@ -63,43 +59,28 @@ public class ActivityCollection extends AppCompatActivity implements NavigationV
     public boolean bool = false;
 
     private Utilisateur user = null;
-    private List<Langue> langues;
-    private List<Etat> etats;
-    private List<Categorie> categories;
-    private List<CollectionN> lesCollections;
-    private List<Categorie> lesCategories;
+    private List<CollectionPerso> lesCollectionsPerso;
 
-    private RecyclerView recyclerViewCa;
-    private RecyclerViewAdapterCate adapterCa;
-    private LinearLayoutManager linearLayoutManagerCa;
-
-    private RecyclerView recyclerViewCo;
-    private RecyclerViewAdapterColl adapterCo;
-    private LinearLayoutManager linearLayoutManagerCo;
+    private RecyclerView recyclerViewPerso;
+    private RecyclerViewAdapterPerso adapterPerso;
+    private LinearLayoutManager linearLayoutManagerPerso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_collection);
+        setContentView(R.layout.activity_collection_perso);
 
         sharedPreferences = getApplicationContext().getSharedPreferences("Connecter", MODE_PRIVATE);
 
         ////Initialise la connexion
-            DBManagerUtilisateur.init(this);
-            dbManagerUtilisateur = DBManagerUtilisateur.getInstance();
-            DBManagerLangue.init(this);
-            dbManagerLangue = DBManagerLangue.getInstance();
-            DBManagerEtat.init(this);
-            dbManagerEtat = DBManagerEtat.getInstance();
-            DBManagerCollection.init(this);
-            dbManagerCollection = DBManagerCollection.getInstance();
-            DBManagerCategorie.init(this);
-            dbManagerCategorie = DBManagerCategorie.getInstance();
-            recupererUser();
-            createDataOnDownload();
+        DBManagerUtilisateur.init(this);
+        dbManagerUtilisateur = DBManagerUtilisateur.getInstance();
+        DBManagerCollectionPerso.init(this);
+        dbManagerCollectionPerso = DBManagerCollectionPerso.getInstance();
+        recupererUser();
 
         ////Navigation Menu + Toolbar
-            NavigationView navigationView = findViewById(R.id.nav_view);
+            NavigationView navigationView = findViewById(R.id.nav_view2);
             ////Test pour le haeder du menu
             //View inflaterView = getLayoutInflater().inflate(R.layout.nav_header,null);
             //TextView nom = (TextView) inflaterView.findViewById(R.id.nomUserOpen);
@@ -118,12 +99,10 @@ public class ActivityCollection extends AppCompatActivity implements NavigationV
             }
 
             context = this;
-            toolbar = findViewById(R.id.toolbar10);
+            toolbar = findViewById(R.id.toolbar100);
             setSupportActionBar(toolbar);
 
-
-
-            drawer = findViewById(R.id.drawerLayout);
+            drawer = findViewById(R.id.drawerLayout2);
             ////Test pour le haeder du menu
             //NavigationView navigationView = findViewById(R.id.nav_view);
 
@@ -136,35 +115,21 @@ public class ActivityCollection extends AppCompatActivity implements NavigationV
         ////Fin
 
         ////Code page
-            lesCollections = dbManagerCollection.getAllCollectionsByUser(user);
+        lesCollectionsPerso = dbManagerCollectionPerso.getAllCollectionsPersoByUser(user);
 
-            ////Les categories
-            // chercher l'element qui a l'id my_recycler_view
-            /*recyclerViewCa = findViewById(R.id.my_recycler_view_cate);
-            // change pas la taille de la liste (deroulement)
-            recyclerViewCa.setHasFixedSize(true);
+        ////Les collections
+        //View inflaterViewColl = getLayoutInflater().inflate(R.layout.recycler_view_collection,null);
+        // chercher l'element qui a l'id my_recycler_view
+        recyclerViewPerso = findViewById(R.id.my_recycler_view_coll_perso);
+        // change pas la taille de la liste (deroulement)
+        recyclerViewPerso.setHasFixedSize(true);
 
-            linearLayoutManagerCa = new LinearLayoutManager(this);
-            //raffrechir affichage
-            recyclerViewCa.setLayoutManager(linearLayoutManagerCa);
+        linearLayoutManagerPerso = new LinearLayoutManager(this);
+        //raffrechir affichage
+        recyclerViewPerso.setLayoutManager(linearLayoutManagerPerso);
 
-            adapterCa = new RecyclerViewAdapterCate(R.layout.recycler_view_collection, lesCategories,this);
-            recyclerViewCa.setAdapter(adapterCa);*/
-
-            ////Les collections
-            //View inflaterViewColl = getLayoutInflater().inflate(R.layout.recycler_view_collection,null);
-            // chercher l'element qui a l'id my_recycler_view
-            recyclerViewCo = findViewById(R.id.my_recycler_view_coll);
-            // change pas la taille de la liste (deroulement)
-            recyclerViewCo.setHasFixedSize(true);
-
-            linearLayoutManagerCo = new LinearLayoutManager(this);
-            //raffrechir affichage
-            recyclerViewCo.setLayoutManager(linearLayoutManagerCo);
-
-            adapterCo = new RecyclerViewAdapterColl(R.layout.recycler_view_collection, lesCollections,this);
-            recyclerViewCo.setAdapter(adapterCo);
-
+        adapterPerso = new RecyclerViewAdapterPerso(R.layout.recycler_view_collection_perso, lesCollectionsPerso,this);
+        recyclerViewPerso.setAdapter(adapterPerso);
     }
 
     @Override
@@ -179,7 +144,10 @@ public class ActivityCollection extends AppCompatActivity implements NavigationV
                 Connecter = preferences2.getBoolean(connec, bool);
                 int id2 = preferences2.getInt(idC, 0);
                 if(Connecter) {
-                    Toast.makeText(this, "Vous êtes déjà sur la page collection", Toast.LENGTH_SHORT).show();
+                    final Intent intentCollection = new Intent(this, ActivityCollection.class);
+                    intentCollection.putExtra(Intent.EXTRA_USER, user);
+                    startActivity(intentCollection);
+                    finish();
                 }else{
                     final Intent intentDeco = new Intent(this, MainActivity.class);
                     startActivity(intentDeco);
@@ -192,10 +160,7 @@ public class ActivityCollection extends AppCompatActivity implements NavigationV
                 Connecter = preferences3.getBoolean(connec, bool);
                 int id3 = preferences3.getInt(idC, 0);
                 if(Connecter) {
-                    final Intent intentCollectionPerso = new Intent(this, ActivityCollectionPerso.class);
-                    intentCollectionPerso.putExtra(Intent.EXTRA_USER, user);
-                    startActivity(intentCollectionPerso);
-                    finish();
+                    Toast.makeText(this, "Vous êtes déjà sur la page collection perso", Toast.LENGTH_SHORT).show();
                 }else{
                     final Intent intentDeco = new Intent(this, MainActivity.class);
                     startActivity(intentDeco);
@@ -211,7 +176,7 @@ public class ActivityCollection extends AppCompatActivity implements NavigationV
                 SharedPreferences.Editor editor = sharedPreferences.edit();
                 editor.clear();
                 editor.commit();
-                Intent intentDeconnexion = new Intent(ActivityCollection.this, MainActivity.class);
+                Intent intentDeconnexion = new Intent(ActivityCollectionPerso.this, MainActivity.class);
                 startActivity(intentDeconnexion);
                 break;
         }
@@ -231,7 +196,7 @@ public class ActivityCollection extends AppCompatActivity implements NavigationV
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menu, menu);
-        menu.findItem(R.id.titleMenu).setTitle("Collection");
+        menu.findItem(R.id.titleMenu).setTitle("Collection Perso");
         return true;
     }
 
@@ -270,65 +235,9 @@ public class ActivityCollection extends AppCompatActivity implements NavigationV
         if(getIntent() !=null) {
             Bundle data = getIntent().getExtras();
             user = data.getParcelable(getIntent().EXTRA_USER);
-            Toast.makeText(this, "Bienvenue " + user.getName(), Toast.LENGTH_SHORT).show();
-            Log.e("error", user.getId()+"");
+            Log.e("User", user.getId()+" - " + user.getName());
         }else{
             Toast.makeText(this, "Error intent ! ", Toast.LENGTH_SHORT).show();
         }
     }
-
-    public void createDataOnDownload(){
-        Log.e("Error", user.getId()+" - "+user.getName());
-        langues = dbManagerLangue.getAllLanguesByUser(user);
-        etats = dbManagerEtat.getAllEtats();
-        categories = dbManagerCategorie.getAllCategoriesByUser(user);
-        if(langues.size()<2){
-            Langue l = new Langue("Francais",user);
-            Langue l2 = new Langue("Anglais",user);
-            Langue l3 = new Langue("Coréen",user);
-            Langue l4 = new Langue("Japonnais",user);
-            Toast.makeText(this, "Nom : " +user.getName(), Toast.LENGTH_SHORT).show();
-            dbManagerLangue.createLangue(l);
-            dbManagerLangue.createLangue(l2);
-            dbManagerLangue.createLangue(l3);
-            dbManagerLangue.createLangue(l4);
-        }else{
-
-        }
-        if(etats.size()<2){
-            Etat et1 = new Etat("Neuf");
-            Etat et2 = new Etat("Tres bon état");
-            Etat et3 = new Etat("Bon état");
-            Etat et4 = new Etat("Etat moyen");
-            Etat et5 = new Etat("Mauvais état");
-            Etat et6 = new Etat("Tres Abimé");
-            dbManagerEtat.createEtat(et1);
-            dbManagerEtat.createEtat(et2);
-            dbManagerEtat.createEtat(et3);
-            dbManagerEtat.createEtat(et4);
-            dbManagerEtat.createEtat(et5);
-            dbManagerEtat.createEtat(et6);
-        }
-        if(categories.size()<2){
-            Categorie cat1 = new Categorie("Wizards",false,user);
-            Categorie cat2 = new Categorie("Ex",false,user);
-            Categorie cat3 = new Categorie("Diamant & Perle",false,user);
-            Categorie cat4 = new Categorie("Platine",false,user);
-            Categorie cat5 = new Categorie("HeartGold & SoulSilver",false,user);
-            Categorie cat6 = new Categorie("Appel des légendes",false,user);
-            Categorie cat7 = new Categorie("Noir & Blanc",false,user);
-            Categorie cat8 = new Categorie("X & Y",false,user);
-            Categorie cat9 = new Categorie("Soleil & Lune",false,user);
-            dbManagerCategorie.createCategorie(cat1);
-            dbManagerCategorie.createCategorie(cat2);
-            dbManagerCategorie.createCategorie(cat3);
-            dbManagerCategorie.createCategorie(cat4);
-            dbManagerCategorie.createCategorie(cat5);
-            dbManagerCategorie.createCategorie(cat6);
-            dbManagerCategorie.createCategorie(cat7);
-            dbManagerCategorie.createCategorie(cat8);
-            dbManagerCategorie.createCategorie(cat9);
-        }
-    }
 }
-

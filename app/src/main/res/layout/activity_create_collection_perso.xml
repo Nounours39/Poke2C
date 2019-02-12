@@ -41,7 +41,7 @@
         app:layout_constraintVertical_bias="0.452" />
 
     <EditText
-        android:id="@+id/edtNom"
+        android:id="@+id/edtNomPerso"
         android:layout_width="350dp"
         android:layout_height="43dp"
         android:ems="10"
@@ -67,7 +67,7 @@
         app:layout_constraintVertical_bias="0.611" />
 
     <EditText
-        android:id="@+id/edtNbMax"
+        android:id="@+id/edtNbMaxPerso"
         android:layout_width="162dp"
         android:layout_height="45dp"
         android:ems="10"
@@ -105,7 +105,7 @@
         app:layout_constraintVertical_bias="0.312" />
 
     <Spinner
-        android:id="@+id/spinnerLangue"
+        android:id="@+id/spinnerLanguePerso"
         android:layout_width="231dp"
         android:layout_height="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -116,7 +116,7 @@
         app:layout_constraintVertical_bias="0.231" />
 
     <Spinner
-        android:id="@+id/spinnerCategorie"
+        android:id="@+id/spinnerCategoriePerso"
         android:layout_width="228dp"
         android:layout_height="33dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -139,7 +139,7 @@
         app:layout_constraintVertical_bias="0.694" />
 
     <TextView
-        android:id="@+id/chemin"
+        android:id="@+id/cheminPerso"
         android:layout_width="204dp"
         android:layout_height="96dp"
         android:text=""
@@ -151,7 +151,7 @@
         app:layout_constraintVertical_bias="0.855" />
 
     <ImageView
-        android:id="@+id/imgColl"
+        android:id="@+id/imgCollPerso"
         android:layout_width="116dp"
         android:layout_height="105dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -163,7 +163,7 @@
         app:srcCompat="@mipmap/ic_launcher_round" />
 
     <Button
-        android:id="@+id/btnCreateCollection"
+        android:id="@+id/btnCreateCollectionPerso"
         android:layout_width="226dp"
         android:layout_height="48dp"
         android:text="Créer la collection"
@@ -174,7 +174,7 @@
         app:layout_constraintVertical_bias="0.99" />
 
     <Button
-        android:id="@+id/btnCreateCategorieColl"
+        android:id="@+id/btnCreateCategorieCollPerso"
         android:layout_width="112dp"
         android:layout_height="57dp"
         android:text="Créer une categorie"
@@ -186,7 +186,7 @@
         app:layout_constraintVertical_bias="0.366" />
 
     <Button
-        android:id="@+id/btnCreateLangueColl"
+        android:id="@+id/btnCreateLangueCollPerso"
         android:layout_width="112dp"
         android:layout_height="57dp"
         android:text="Créer une langue"

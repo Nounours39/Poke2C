@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -24,11 +25,13 @@ public class ActivityCreateCategorie extends AppCompatActivity {
 
     private EditText edtNom;
     private Button btnCreateCategorie;
+    private CheckBox checkbox;
 
     private Toolbar toolbarCategorie;
     private Utilisateur user;
     private List<Categorie> lesCategories;
     private Categorie categorie;
+    private boolean perso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +40,7 @@ public class ActivityCreateCategorie extends AppCompatActivity {
 
         edtNom = findViewById(R.id.edtNomCategorie);
         btnCreateCategorie = findViewById(R.id.btnCreateCategorie);
+        checkbox = findViewById(R.id.checkPerso);
 
         DBManagerCategorie.init(this);
         dbManagerCategorie = DBManagerCategorie.getInstance();
@@ -60,10 +64,13 @@ public class ActivityCreateCategorie extends AppCompatActivity {
             public void onClick(View view) {
                 if(edtNom.getText().toString()!=null){
                     final Intent intentCreateCategorie = new Intent(getApplicationContext(), ActivityCollection.class);
+                    perso = checkbox.isChecked();
+                    Log.e("Error", perso+" ! ");
                     Log.e("Error", user.getName()+" - "+user.getId());
                     lesCategories = dbManagerCategorie.getAllCategoriesByUser(user);
                     categorie = new Categorie();
                     categorie.setCategorie(edtNom.getText().toString());
+                    categorie.setPerso(perso);
                     categorie.setUser(user);
                     Boolean fin = false;
                     int i = 0;

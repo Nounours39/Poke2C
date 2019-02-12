@@ -8,6 +8,7 @@ import android.util.Log;
 import com.example.lucas.poke2c.model.CartePokemon;
 import com.example.lucas.poke2c.model.Categorie;
 import com.example.lucas.poke2c.model.CollectionN;
+import com.example.lucas.poke2c.model.CollectionPerso;
 import com.example.lucas.poke2c.model.Etat;
 import com.example.lucas.poke2c.model.Information;
 import com.example.lucas.poke2c.model.Langue;
@@ -29,6 +30,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
     private Dao<Langue, Integer> LangueDAO = null;
     private Dao<Etat, Integer> EtatDAO = null;
     private Dao<Categorie, Integer> CategorieDAO = null;
+    private Dao<CollectionPerso, Integer> CollectionPersoDAO = null;
 
 
     /** CONSTANT
@@ -52,6 +54,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.createTable(connectionSource, Langue.class);
             TableUtils.createTable(connectionSource, Etat.class);
             TableUtils.createTable(connectionSource, Categorie.class);
+            TableUtils.createTable(connectionSource, CollectionPerso.class);
             Log.i(DatabaseHelper.class.getName(), "Les tables ont été créé ! ");
         } catch (java.sql.SQLException e) {
             e.printStackTrace();
@@ -70,6 +73,7 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             TableUtils.dropTable(connectionSource, Langue.class, true);
             TableUtils.dropTable(connectionSource, Etat.class, true);
             TableUtils.dropTable(connectionSource, Categorie.class, true);
+            TableUtils.dropTable(connectionSource, CollectionPerso.class, true);
             Log.i(DatabaseHelper.class.getName(), "Les tables ont été supprimé ! ");
             onCreate(sqLiteDatabase,connectionSource);
         } catch (SQLException e) {
@@ -156,5 +160,16 @@ public class DatabaseHelper extends OrmLiteSqliteOpenHelper {
             }
         }
         return CategorieDAO;
+    }
+
+    public Dao<CollectionPerso, Integer> getCollectionPersoDao() {
+        if (CollectionPersoDAO == null) {
+            try {
+                CollectionPersoDAO = getDao(CollectionPerso.class);
+            }catch (java.sql.SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return CollectionPersoDAO;
     }
 }

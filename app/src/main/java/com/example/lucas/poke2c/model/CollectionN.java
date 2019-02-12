@@ -1,5 +1,7 @@
 package com.example.lucas.poke2c.model;
 
+import com.example.lucas.poke2c.database.DBManagerCarte;
+import com.example.lucas.poke2c.database.DBManagerUtilisateur;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -21,18 +23,22 @@ public class CollectionN {
     private Langue langue;
     @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = "user")
     private Utilisateur user;
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = "categorie")
+    private Categorie categorie;
     @ForeignCollectionField
     Collection<CartePokemon> cartepokemon;
 
     public CollectionN(){
 
     }
-    public CollectionN(String nom, int nombre_max, String icon, Langue langue, Utilisateur user){
+
+    public CollectionN(String nom, int nombre_max, String icon, Langue langue, Utilisateur user, Categorie categorie){
         this.nom = nom;
         this.nombre_max = nombre_max;
         this.icon = icon;
         this.langue = langue;
         this.user = user;
+        this.categorie = categorie;
     }
 
     public long getId() {
@@ -76,4 +82,18 @@ public class CollectionN {
     public void setUser(Utilisateur user) {
         this.user = user;
     }
+
+    public Categorie getCategorie() {
+        return categorie;
+    }
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
+
+    public int nbCarte(){
+        return cartepokemon.size();
+    }
+
+
+
 }

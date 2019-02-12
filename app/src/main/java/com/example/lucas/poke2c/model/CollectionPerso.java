@@ -1,9 +1,12 @@
 package com.example.lucas.poke2c.model;
 
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
 
-@DatabaseTable(tableName = "collection")
+import java.util.Collection;
+
+@DatabaseTable(tableName = "collectionPerso")
 public class CollectionPerso {
 
     @DatabaseField(generatedId = true)
@@ -13,16 +16,27 @@ public class CollectionPerso {
     @DatabaseField(columnName = "nombre_max", canBeNull = false)
     private int nombre_max;
     @DatabaseField(columnName = "iconid", canBeNull = false)
-    private int iconId;
+    private String icon;
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = "langue")
+    private Langue langue;
     @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = "user")
     private Utilisateur user;
+    @DatabaseField(foreign = true, foreignAutoRefresh = true, columnName = "categorie")
+    private Categorie categorie;
+    @ForeignCollectionField
+    Collection<CartePokemon> cartepokemon;
 
     public CollectionPerso(){
 
     }
-    public CollectionPerso(String nom, int nombre_max, int iconId, int langueId){
+
+    public CollectionPerso(String nom, int nombre_max, String icon, Langue langue, Utilisateur user, Categorie categorie) {
         this.nom = nom;
         this.nombre_max = nombre_max;
+        this.icon = icon;
+        this.langue = langue;
+        this.user = user;
+        this.categorie = categorie;
     }
 
     public long getId() {
@@ -46,10 +60,35 @@ public class CollectionPerso {
         this.nombre_max = nombre_max;
     }
 
-    public int getIconId() {
-        return iconId;
+    public String getIcon() {
+        return icon;
     }
-    public void setIconId(int iconId) {
-        this.iconId = iconId;
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
+
+    public Langue getLangue() {
+        return langue;
+    }
+    public void setLangue(Langue langue) {
+        this.langue = langue;
+    }
+
+    public Utilisateur getUser() {
+        return user;
+    }
+    public void setUser(Utilisateur user) {
+        this.user = user;
+    }
+
+    public Categorie getCategorie() {
+        return categorie;
+    }
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
+
+    public int nbCartePerso(){
+        return cartepokemon.size();
     }
 }

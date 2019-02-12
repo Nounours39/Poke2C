@@ -3,6 +3,7 @@ package com.example.lucas.poke2c.database;
 import android.content.Context;
 
 import com.example.lucas.poke2c.model.CartePokemon;
+import com.example.lucas.poke2c.model.CollectionN;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -61,5 +62,4 @@ public class DBManagerCarte {
             return -1;
         }
     }
-
 }
